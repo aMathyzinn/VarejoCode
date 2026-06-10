@@ -1,0 +1,29 @@
+{
+  "name": "VarejoCode",
+  "short_name": "VarejoCode",
+  "description": "Plataforma de desenvolvimento de software sob demanda via Discord",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["development", "productivity", "business"],
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": []
+}
