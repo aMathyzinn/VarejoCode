@@ -1,0 +1,26 @@
+.page { background:#090a09; color:#f2eee6; min-height:100vh; padding:120px max(20px, calc((100% - 1120px)/2)) 80px; font-family:Arial,Helvetica,sans-serif; }
+.header { max-width:760px; margin-bottom:56px; }
+.header nav { font-size:14px; line-height:1.6; color:#c5c1b9; margin-bottom:28px; }
+.header a { text-underline-offset:4px; }
+.header h1 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(34px,5vw,58px); line-height:1.12; text-wrap:balance; margin:0 0 24px; }
+.header > p { max-width:65ch; font-size:18px; line-height:1.65; color:#d2cec5; }
+.header .updated { font-size:14px; margin-top:18px; }
+.layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:64px; align-items:start; }
+.index { position:sticky; top:100px; display:grid; gap:4px; }
+.index h2 { font-size:16px; margin-bottom:12px; }
+.index a { display:flex; align-items:center; min-height:44px; padding:8px 0; color:#dfc38b; font-size:14px; line-height:1.45; text-decoration:none; }
+.index a:hover { text-decoration:underline; text-underline-offset:4px; }
+.content { max-width:70ch; min-width:0; }
+.content section { scroll-margin-top:110px; margin-bottom:42px; }
+.content h2 { font-family:Georgia,'Times New Roman',serif; font-size:28px; line-height:1.25; margin-bottom:18px; text-wrap:balance; }
+.content p,.content li { color:#d2cec5; font-size:16px; line-height:1.75; overflow-wrap:anywhere; }
+.content p + p { margin-top:14px; }
+.content ul { padding-left:22px; margin:14px 0; }
+.content li + li { margin-top:8px; }
+.content a { color:#f0d6a4; text-underline-offset:4px; }
+.actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+.actions a { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:12px 18px; border:1px solid #8d7955; border-radius:8px; text-decoration:none; }
+.actions a:first-child { background:#f0d6a4; color:#17140f; font-weight:600; }
+.page a:focus-visible { outline:2px solid #f0d6a4; outline-offset:4px; }
+@media(max-width:900px) { .layout { grid-template-columns:1fr; gap:36px; }.index { position:static; }.index h2 { margin-bottom:4px; }.header { margin-bottom:32px; } }
+@media(max-width:480px) { .page { padding-top:96px; padding-bottom:40px; }.header > p { font-size:16px; }.content h2 { font-size:26px; }.actions { flex-direction:column; } }

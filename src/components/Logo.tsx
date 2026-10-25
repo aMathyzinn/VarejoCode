@@ -11,7 +11,7 @@ const Logo = memo(function Logo({ className = "", size = 40, priority = false }:
   return (
     <div className={`relative ${className}`} style={{ width: size, height: size }} suppressHydrationWarning>
       <Image
-        src="/logo.png"
+        src="/varejocode-logo.png"
         alt="VarejoCode Logo"
         width={size}
         height={size}

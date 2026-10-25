@@ -1,7 +1,7 @@
 {
   "name": "VarejoCode",
   "short_name": "VarejoCode",
-  "description": "Plataforma de desenvolvimento de software sob demanda via Discord",
+  "description": "Desenvolvimento sob demanda de sites, bots, sistemas, APIs, aplicativos e automações para negócios online.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",

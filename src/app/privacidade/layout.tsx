@@ -1,11 +1,15 @@
+import { SOCIAL_IMAGE } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade",
-  description: "Política de Privacidade da Varejo Code. Saiba como coletamos, usamos e protegemos suas informações pessoais em nossos serviços de desenvolvimento.",
+  title: { absolute: "Política de Privacidade | VarejoCode" },
+  description: "Como a VarejoCode trata os dados pessoais recebidos em seus canais e serviços.",
+  alternates: { canonical: "/privacidade/" },
   openGraph: {
+    images: [SOCIAL_IMAGE],
+    url: "/privacidade/",
     title: "Política de Privacidade | VarejoCode",
-    description: "Política de Privacidade da Varejo Code. Saiba como tratamos seus dados pessoais.",
+    description: "Como a VarejoCode trata os dados pessoais recebidos em seus canais e serviços.",
     type: "website",
   },
   robots: {

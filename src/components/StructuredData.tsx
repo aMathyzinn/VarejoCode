@@ -1,189 +1,119 @@
-import Script from 'next/script';
+import { URLS } from "@/lib/constants";
+
+const organizationId = "https://varejocode.com.br/#organization";
+const websiteId = "https://varejocode.com.br/#website";
 
 export default function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "VarejoCode",
-    "url": "https://varejocode.com.br",
-    "logo": "https://varejocode.com.br/logo.png",
-    "description": "Plataforma de desenvolvimento de software sob demanda via Discord. Sem burocracia, sem taxas abusivas. Powered by aMathyzin Group.",
-    "sameAs": [
-      "https://discord.gg/THE7mm5uVk"
-    ],
-    "parentOrganization": {
-      "@type": "Organization",
-      "name": "aMathyzin Group",
-      "url": "https://amathyzin.com.br/",
-      "logo": "https://amathyzin.com.br/imgs/logo.webp"
+    "@type": "ProfessionalService",
+    "@id": organizationId,
+    name: "VarejoCode",
+    url: URLS.WEBSITE,
+    logo: `${URLS.WEBSITE}/varejocode-logo.png`,
+    image: `${URLS.WEBSITE}/banner.png`,
+    description: "Desenvolvimento sob demanda para negócios online. A VarejoCode cria sites, bots para Discord, sistemas, APIs, aplicativos e automações, com escopo, valor e prazo combinados antes de começar.",
+    areaServed: {
+      "@type": "Country",
+      name: "Brasil",
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Customer Service",
-      "email": "contato@varejocode.com.br",
-      "url": "https://discord.gg/THE7mm5uVk",
-      "availableLanguage": "Portuguese"
-    }
+    availableLanguage: "pt-BR",
+    sameAs: [URLS.GITHUB, URLS.INSTAGRAM, URLS.YOUTUBE, URLS.DISCORD_INVITE],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "orçamento e atendimento",
+        telephone: "+55-21-97903-5423",
+        email: URLS.EMAIL,
+        url: URLS.WHATSAPP,
+        availableLanguage: "pt-BR",
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "acompanhamento de projeto",
+        url: URLS.DISCORD_INVITE,
+        availableLanguage: "pt-BR",
+      },
+    ],
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "VarejoCode",
-    "url": "https://varejocode.com.br",
-    "description": "Desenvolvimento de software sob demanda via Discord",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://varejocode.com.br/#servicos?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "@id": websiteId,
+    name: "VarejoCode",
+    url: URLS.WEBSITE,
+    inLanguage: "pt-BR",
+    publisher: { "@id": organizationId },
+    description: "Informações sobre os serviços, processo, planos, portfólio e canais de atendimento da VarejoCode.",
   };
 
-  const servicesSchema = {
+  const serviceSchema = [
+    {
+      name: "Desenvolvimento de sites e lojas online",
+      description: "Landing pages, catálogos, sites institucionais, lojas, portfólios e blogs com caminhos de contato, pedido e compra organizados.",
+    },
+    {
+      name: "Desenvolvimento de bots para Discord",
+      description: "Bots para servidores e comunidades de Discord com moderação, tickets, cargos, comandos e rotinas específicas.",
+    },
+    {
+      name: "Sistemas e APIs sob demanda",
+      description: "Painéis, integrações e APIs para pedidos, clientes, estoque, dados e processos que estão espalhados entre planilhas e mensagens.",
+    },
+    {
+      name: "Aplicativos mobile e desktop",
+      description: "Aplicativos para Android, iOS, Windows, macOS e Linux quando clientes ou equipe precisam de uma ferramenta própria.",
+    },
+    {
+      name: "Automações e integrações",
+      description: "Automações e conexões entre planilhas, formulários, pedidos, avisos, APIs e bots personalizados.",
+    },
+  ].map((service) => ({
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "Service",
-        "name": "Desenvolvimento de Bots para Discord",
-        "description": "Bots personalizados para Discord com moderação, música, economia, RPG e sistemas de ticket.",
-        "provider": {
-          "@type": "Organization",
-          "name": "VarejoCode"
-        }
-      },
-      {
-        "@type": "Service",
-        "name": "Desenvolvimento de Websites e Landing Pages",
-        "description": "Sites institucionais, e-commerce, portfolios e blogs responsivos e modernos.",
-        "provider": {
-          "@type": "Organization",
-          "name": "VarejoCode"
-        }
-      },
-      {
-        "@type": "Service",
-        "name": "Desenvolvimento de Aplicativos Mobile",
-        "description": "Apps para Android e iOS usando React Native e Flutter.",
-        "provider": {
-          "@type": "Organization",
-          "name": "VarejoCode"
-        }
-      },
-      {
-        "@type": "Service",
-        "name": "Automações em Python",
-        "description": "Web scraping, automação de processos, APIs e bots personalizados.",
-        "provider": {
-          "@type": "Organization",
-          "name": "VarejoCode"
-        }
-      }
-    ]
-  };
+    "@type": "Service",
+    ...service,
+    provider: { "@id": organizationId },
+    areaServed: { "@type": "Country", name: "Brasil" },
+    availableChannel: [
+      { "@type": "ServiceChannel", serviceUrl: URLS.WHATSAPP },
+      { "@type": "ServiceChannel", serviceUrl: URLS.DISCORD_INVITE },
+    ],
+  }));
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Como funciona o processo?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Você entra no nosso servidor Discord, abre um ticket, descreve seu projeto e recebe um orçamento personalizado. Após aprovação, iniciamos o desenvolvimento."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quais formas de pagamento são aceitas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Aceitamos PIX, cartão de crédito e transferência bancária. O pagamento é direto, sem intermediários."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Qual a diferença entre os planos?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No Plano Hospedado você paga menos inicialmente e uma mensalidade para hospedagem e suporte. No Plano Source você paga uma única vez e recebe o código-fonte completo."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quanto tempo leva para desenvolver um projeto?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O prazo varia de acordo com a complexidade do projeto. Projetos simples podem ficar prontos em 3-7 dias, enquanto projetos mais complexos podem levar semanas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Posso solicitar alterações depois da entrega?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sim! No Plano Hospedado as manutenções são gratuitas. No Plano Source você pode solicitar alterações mediante orçamento."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Preciso ter conhecimento técnico?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Não! Cuidamos de toda a parte técnica. Você só precisa nos dizer o que deseja e nós fazemos acontecer."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Como é o suporte após a entrega?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No Plano Hospedado o suporte é contínuo e incluído. No Plano Source oferecemos garantia de 30 dias e suporte adicional mediante contratação."
-        }
-      }
-    ]
+    mainEntity: [
+      ["Quanto tempo leva?", "Landing pages, bots simples e automações menores costumam levar de 3 a 7 dias. Para sistemas maiores, a previsão vai no orçamento antes da aprovação."],
+      ["O orçamento tem custo?", "Não. Mandar a ideia e receber escopo, prazo e valor não gera compromisso de contratação."],
+      ["Como acompanho o andamento?", "Cada projeto tem um canal privado no Discord. É nele que ficam as atualizações, links de teste, aprovações e decisões."],
+      ["Como funciona o pagamento?", "Depois de alinhar escopo, prazo e valor, o pagamento é combinado diretamente por PIX. Em projetos maiores, as etapas também são definidas antes de começar."],
+      ["Qual é a diferença entre os planos?", "No Plano Hospedado, a VarejoCode cuida de hospedagem, manutenção e suporte contínuo. No Plano Source, você recebe o código-fonte e hospeda onde quiser."],
+      ["Preciso saber tecnologia?", "Não. Diga o que precisa mudar, envie uma referência se tiver e informe quem vai usar. A ferramenta é definida depois."],
+      ["O que acontece se eu quiser mudar algo?", "As revisões e os ajustes incluídos são definidos no orçamento. Mudanças que ampliam o escopo são explicadas e orçadas antes de serem feitas."],
+    ].map(([name, text]) => ({
+      "@type": "Question",
+      name,
+      acceptedAnswer: { "@type": "Answer", text },
+    })),
   };
 
-  const aggregateRatingSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "VarejoCode",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "ratingCount": "80"
-    }
-  };
+  const schemas = [
+    ["organization-schema", organizationSchema],
+    ["website-schema", websiteSchema],
+    ...serviceSchema.map((service, index) => [`service-schema-${index}`, service] as const),
+    ["faq-schema", faqSchema],
+  ] as const;
 
-  return (
-    <>
-      <Script
-        id="organization-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <Script
-        id="website-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <Script
-        id="services-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
-      />
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Script
-        id="rating-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
-      />
-    </>
-  );
+  return schemas.map(([id, schema]) => (
+    <script
+      key={id}
+      id={id}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+      }}
+    />
+  ));
 }

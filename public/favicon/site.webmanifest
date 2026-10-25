@@ -1,15 +1,16 @@
 {
-  "name": "VarejoCode Site",
-  "short_name": "VarejoCode ",
+  "name": "VarejoCode",
+  "short_name": "VarejoCode",
+  "description": "Desenvolvimento sob demanda de sites, bots, sistemas, APIs, aplicativos e automações para negócios online.",
   "icons": [
     {
-      "src": "/public/web-app-manifest-192x192.png",
+      "src": "/favicon/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/public/web-app-manifest-512x512.png",
+      "src": "/favicon/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

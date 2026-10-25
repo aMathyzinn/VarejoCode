@@ -1,11 +1,15 @@
+import { SOCIAL_IMAGE } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Portfólio | VarejoCode",
-  description: "Conheça os projetos desenvolvidos pela VarejoCode — apps, sites, sistemas e soluções criadas para clientes reais. Parcerias e projetos próprios.",
+  title: { absolute: "Portfólio de sites, bots e sistemas | VarejoCode" },
+  description: "Conheça os projetos selecionados da VarejoCode, com contexto, funcionalidades, tecnologias e resultados publicados.",
+  alternates: { canonical: "/portfolio/" },
   openGraph: {
-    title: "Portfólio | VarejoCode",
-    description: "Conheça os projetos desenvolvidos pela VarejoCode — apps, sites, sistemas e soluções criadas para clientes reais.",
+    images: [SOCIAL_IMAGE],
+    url: "/portfolio/",
+    title: "Portfólio de sites, bots e sistemas | VarejoCode",
+    description: "Projetos selecionados da VarejoCode, com contexto, funcionalidades, tecnologias e resultados publicados.",
     type: "website",
   },
   robots: {

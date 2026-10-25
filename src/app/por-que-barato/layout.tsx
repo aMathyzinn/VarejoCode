@@ -1,11 +1,15 @@
+import { SOCIAL_IMAGE } from "@/lib/constants";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Por que tão barato? | VarejoCode",
-  description: "Entenda por que os preços da VarejoCode são tão mais baixos que o mercado — sem mistério, sem pegadinha. Transparência total sobre como nosso modelo funciona.",
+  title: { absolute: "Como funciona a contratação | VarejoCode" },
+  description: "Entenda como a VarejoCode organiza atendimento, escopo, preço e suporte em projetos sob demanda.",
+  alternates: { canonical: "/por-que-barato/" },
   openGraph: {
-    title: "Por que tão barato? | VarejoCode",
-    description: "Entenda por que os preços da VarejoCode são tão mais baixos que o mercado — sem mistério, sem pegadinha.",
+    images: [SOCIAL_IMAGE],
+    url: "/por-que-barato/",
+    title: "Como funciona a contratação | VarejoCode",
+    description: "Entenda como a VarejoCode organiza atendimento, escopo, preço e suporte em projetos sob demanda.",
     type: "website",
   },
   robots: {

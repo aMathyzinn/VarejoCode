@@ -87,7 +87,7 @@ const LogoRow = memo(function LogoRow({ duration, top }: { duration: number; top
       >
         {logos.map((_, i) => (
           <div key={i} className="flex-shrink-0 w-16 h-16 relative">
-            <Image src="/logo.png" alt="" fill className="object-contain" loading="lazy" />
+            <Image src="/varejocode-logo.png" alt="" fill className="object-contain" loading="lazy" />
           </div>
         ))}
       </motion.div>

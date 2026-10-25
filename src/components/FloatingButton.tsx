@@ -1,26 +1,59 @@
 "use client";
 
-import { memo } from "react";
-import { motion } from "framer-motion";
-import Logo from "@/components/Logo";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Phone } from "lucide-react";
+import { URLS } from "@/lib/constants";
 import { useWaterTransition } from "@/components/WaterTransition";
 
-export default memo(function FloatingButton() {
-  const { triggerTransition } = useWaterTransition();
+export default function FloatingButton() {
+  const [isPastHero, setIsPastHero] = useState(false);
+  const [isFinalVisible, setIsFinalVisible] = useState(false);
+  const { triggerWhatsAppTransition } = useWaterTransition();
+
+  useEffect(() => {
+    const hero = document.querySelector(".vc-stage");
+    const finalCta = document.querySelector(".vc-final");
+    if (!hero || !finalCta) return;
+
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => setIsPastHero(!entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    const finalObserver = new IntersectionObserver(
+      ([entry]) => setIsFinalVisible(entry.isIntersecting),
+      { threshold: 0.15 },
+    );
+
+    heroObserver.observe(hero);
+    finalObserver.observe(finalCta);
+    return () => {
+      heroObserver.disconnect();
+      finalObserver.disconnect();
+    };
+  }, []);
 
   return (
-    <motion.button
-      onClick={triggerTransition}
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 1, type: "spring", stiffness: 200 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-black dark:bg-white text-white dark:text-black font-semibold py-4 px-6 rounded-full shadow-2xl hover:shadow-black/50 transition-all duration-300 cursor-pointer"
-      aria-label="Falar com atendente no Discord"
-    >
-      <Logo size={24} className="filter brightness-0" />
-      <span className="hidden sm:inline">Falar com Atendente</span>
-    </motion.button>
+    <AnimatePresence>
+      {isPastHero && !isFinalVisible && (
+        <motion.a
+          href={URLS.WHATSAPP}
+          onClick={triggerWhatsAppTransition}
+          target="_blank"
+          rel="noreferrer"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 12 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          whileHover={{ y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          className="fixed bottom-5 right-4 z-50 flex min-h-12 min-w-12 items-center justify-center gap-3 rounded-full border border-white/30 bg-white px-5 py-3 text-sm font-bold text-black shadow-[0_6px_14px_rgba(0,0,0,.28)] transition-colors hover:bg-white/85 sm:bottom-6 sm:right-6"
+          aria-label="Pedir orçamento no WhatsApp"
+        >
+          <Phone className="h-5 w-5" aria-hidden="true" />
+          <span className="hidden sm:inline">Pedir orçamento</span>
+        </motion.a>
+      )}
+    </AnimatePresence>
   );
-});
+}

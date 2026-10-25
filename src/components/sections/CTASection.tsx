@@ -90,10 +90,10 @@ export default memo(function CTASection() {
               Prefere e-mail?
             </p>
             <a 
-              href="mailto:contato@varejocode.com.br"
+              href="mailto:project@varejocode.com.br"
               className="inline-flex items-center gap-2 text-base font-semibold text-black dark:text-white hover:underline hover:text-discord-blurple dark:hover:text-discord-blurple transition-colors"
             >
-              📧 contato@varejocode.com.br
+              📧 project@varejocode.com.br
             </a>
           </motion.div>
 
